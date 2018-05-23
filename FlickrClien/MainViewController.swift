@@ -7,29 +7,51 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchFlickrPhotos()
 
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+}
+// MARK: Networking
+extension MainViewController {
+    func fetchFlickrPhotos (searchText: String? = nil, completion: (([Photo]?) -> Void)? = nil) {
+        let url = URL(string:"https://api.flickr.com/services/rest/?")!
+        let parameters = [
+            "method" : "flickr.interestingness.getList",
+            "api_key" : "86997f23273f5a518b027e2c8c019b0f",
+            "sort" : "relevance",
+            "per_page" : "30",
+            "format" : "json",
+            "nojsoncallback" : "1",
+            "extras" : "url_q,url_z"
+            
+        ]
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        Alamofire.request (url, method: .get, parameters: parameters)
+        .validate()
+            .responseData { (response) in
+                switch response.result {
+                case .success:
+                    guard let data = response.data, let json = try? JSON(data: data) else {
+                      print("Error while parsing Flickr response")
+                        completion?(nil)
+                        return
+                    }
+                    
+                    print(json)
+                    completion?(nil)
+                
+                case .failure(let error):
+                    print("Error while fetching photos : \(error.localizedDescription)")
+                    completion?(nil)
+                }
     }
-    */
-
+ }
 }
