@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="69P-c8-380">
             <objects>
-                <viewController id="N2C-Mu-nky" sceneMemberID="viewController">
+                <viewController id="N2C-Mu-nky" customClass="MainViewController" customModule="FlickrClien" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5vq-iQ-7r5"/>
                         <viewControllerLayoutGuide type="bottom" id="ZE2-As-Zyl"/>
@@ -39,6 +39,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="gqL-5L-1Mf" kind="show" id="kyY-A5-An7"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -66,6 +69,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JdM-X0-JMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1656.8" y="-3.1484257871064472"/>
+        </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="jcR-ZJ-Pan">
+            <objects>
+                <viewController id="gqL-5L-1Mf" customClass="PhotoViewController" customModule="FlickrClien" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f8e-av-CXp"/>
+                        <viewControllerLayoutGuide type="bottom" id="xio-tE-neA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uvK-PI-gzO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xEn-n9-3hK">
+                                <rect key="frame" x="0.0" y="168" width="240" height="128"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xEn-n9-3hK" secondAttribute="trailing" id="JEb-EQ-kmD"/>
+                            <constraint firstItem="xEn-n9-3hK" firstAttribute="leading" secondItem="uvK-PI-gzO" secondAttribute="leading" id="hgw-5m-vwl"/>
+                            <constraint firstItem="xEn-n9-3hK" firstAttribute="top" secondItem="f8e-av-CXp" secondAttribute="bottom" id="qUm-Gw-rgz"/>
+                            <constraint firstItem="xio-tE-neA" firstAttribute="top" secondItem="xEn-n9-3hK" secondAttribute="bottom" id="xne-zg-rWR"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Ef-En-ks6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2409" y="-9"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pFL-Fp-t7w">
