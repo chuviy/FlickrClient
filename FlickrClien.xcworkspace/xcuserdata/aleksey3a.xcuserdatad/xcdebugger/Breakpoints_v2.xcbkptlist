@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickrClien/Photo.swift"
-            timestampString = "548770013.699622"
+            timestampString = "548864481.0763021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
             landmarkName = "Photo"
             landmarkType = "14">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickrClien/MainViewController.swift"
-            timestampString = "548778736.371312"
+            timestampString = "548865933.093271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "fetchFlickrPhotos(searchText:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickrClien/MainViewController.swift"
-            timestampString = "548778736.371312"
+            timestampString = "548865933.093271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "MainViewController"
             landmarkType = "4">
          </BreakpointContent>
@@ -54,15 +54,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickrClien/MainViewController.swift"
-            timestampString = "548778736.371312"
+            timestampString = "548865933.093271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "fetchFlickrPhotos(searchText:completion:)"
             landmarkType = "7">
          </BreakpointContent>

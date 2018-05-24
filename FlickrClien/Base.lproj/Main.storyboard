@@ -87,6 +87,9 @@
                             </segments>
                         </segmentedControl>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="ssN-fS-EEl" id="KdP-lA-OSV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JdM-X0-JMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

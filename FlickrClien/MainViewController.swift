@@ -9,18 +9,41 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import MBProgressHUD
 
 class MainViewController: UIViewController {
 
+    var photos: [Photo] = []
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchFlickrPhotos()
+        getFlickerPhotos()
 
     }
 
 }
 // MARK: Networking
 extension MainViewController {
+    
+    func getFlickerPhotos(searchText: String? = nil) {
+        
+        MBProgressHUD.showAdded(to: view, animated: true)
+        
+        fetchFlickrPhotos(searchText: searchText) { [weak self] (photos) in
+        
+            guard let strongSelf = self else { return }
+            
+            MBProgressHUD.hide(for: strongSelf.view, animated: true)
+            
+            if let photos = photos  {
+            strongSelf.photos = photos
+                
+            }
+        }
+    }
+    
     func fetchFlickrPhotos (searchText: String? = nil, completion: (([Photo]?) -> Void)? = nil) {
         let url = URL(string:"https://api.flickr.com/services/rest/?")!
         let parameters = [
@@ -45,9 +68,15 @@ extension MainViewController {
                         return
                     }
                     
-                    print(json)
-                    completion?(nil)
-                
+                  //  print(json)
+                  //  completion?(nil)
+                    
+                    let photosJSON = json["photos"]["photo"]
+                    let photos = photosJSON.arrayValue.flatMap  { Photo(json: $0) }
+                    completion?(photos)
+                    
+                    
+                    
                 case .failure(let error):
                     print("Error while fetching photos : \(error.localizedDescription)")
                     completion?(nil)
