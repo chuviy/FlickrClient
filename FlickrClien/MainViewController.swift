@@ -19,10 +19,27 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getFlickerPhotos()
+        
+      getFlickerPhotos()
 
     }
 
+}
+
+// MARK: Collection View
+extension MainViewController:UICollectionViewDataSource {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+        return photos.count
+    }
+    
+    
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
+        
+        return cell
+    }
 }
 // MARK: Networking
 extension MainViewController {
@@ -72,9 +89,8 @@ extension MainViewController {
                   //  completion?(nil)
                     
                     let photosJSON = json["photos"]["photo"]
-                    let photos = photosJSON.arrayValue.flatMap  { Photo(json: $0) }
+                    let photos = photosJSON.arrayValue.flatMap { Photo(json: $0) }
                     completion?(photos)
-                    
                     
                     
                 case .failure(let error):

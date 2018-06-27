@@ -15,6 +15,7 @@
 		B37861C820A198F000C2D075 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B37861C620A198F000C2D075 /* Main.storyboard */; };
 		B37861CA20A198F000C2D075 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B37861C920A198F000C2D075 /* Assets.xcassets */; };
 		B37861CD20A198F000C2D075 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B37861CB20A198F000C2D075 /* LaunchScreen.storyboard */; };
+		B3FF291220E3903B00995D23 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FF291120E3903B00995D23 /* PhotoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B37861C920A198F000C2D075 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B37861CC20A198F000C2D075 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B37861CE20A198F000C2D075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3FF291120E3903B00995D23 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		BBAD2668A93DE6CAC4CAA5CE /* Pods-FlickrClien.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrClien.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlickrClien/Pods-FlickrClien.release.xcconfig"; sourceTree = "<group>"; };
 		E56F7F0A1FE4321B45239367 /* Pods-FlickrClien.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrClien.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlickrClien/Pods-FlickrClien.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +87,7 @@
 				B37861C220A198F000C2D075 /* AppDelegate.swift */,
 				B37861C620A198F000C2D075 /* Main.storyboard */,
 				B3563B6820B58B060015CE67 /* MainViewController.swift */,
+				B3FF291120E3903B00995D23 /* PhotoCell.swift */,
 				B3563B6C20B590AC0015CE67 /* Photo.swift */,
 				B3563B6A20B58B240015CE67 /* PhotoViewController.swift */,
 				B37861C920A198F000C2D075 /* Assets.xcassets */,
@@ -219,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3563B6D20B590AC0015CE67 /* Photo.swift in Sources */,
+				B3FF291220E3903B00995D23 /* PhotoCell.swift in Sources */,
 				B3563B6920B58B060015CE67 /* MainViewController.swift in Sources */,
 				B3563B6B20B58B240015CE67 /* PhotoViewController.swift in Sources */,
 				B37861C320A198F000C2D075 /* AppDelegate.swift in Sources */,
