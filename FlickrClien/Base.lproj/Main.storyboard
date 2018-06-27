@@ -39,7 +39,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="291" height="220"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h58-lW-N7d">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h58-lW-N7d">
                                                     <rect key="frame" x="12" y="15" width="272" height="195"/>
                                                 </imageView>
                                             </subviews>
@@ -60,9 +60,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gdM-Zg-kUA">
-                                            <rect key="frame" x="-16" y="-2" width="406" height="44"/>
+                                        <searchBar contentMode="redraw" searchBarStyle="prominent" translatesAutoresizingMaskIntoConstraints="NO" id="gdM-Zg-kUA">
+                                            <rect key="frame" x="-16" y="-2" width="406" height="24"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="N2C-Mu-nky" id="PnU-fO-Xek"/>
+                                            </connections>
                                         </searchBar>
                                     </subviews>
                                     <constraints>
@@ -95,6 +98,9 @@
                                 <segment title="Grid"/>
                                 <segment title="List"/>
                             </segments>
+                            <connections>
+                                <action selector="segmentedControlChanged:" destination="N2C-Mu-nky" eventType="valueChanged" id="gWd-vc-4bZ"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
@@ -117,7 +123,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xEn-n9-3hK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xEn-n9-3hK">
                                 <rect key="frame" x="-5" y="68" width="383" height="600"/>
                             </imageView>
                         </subviews>
@@ -129,6 +135,9 @@
                             <constraint firstItem="xio-tE-neA" firstAttribute="top" secondItem="xEn-n9-3hK" secondAttribute="bottom" constant="-1" id="xne-zg-rWR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="photoImageView" destination="xEn-n9-3hK" id="YfO-S0-nKo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ef-En-ks6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

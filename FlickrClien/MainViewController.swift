@@ -14,6 +14,7 @@ import MBProgressHUD
 class MainViewController: UIViewController {
 
     var photos: [Photo] = []
+    var layuotType: LayoutType = .grid
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -21,7 +22,22 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
       getFlickerPhotos()
-
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+     
+        if let PhotoViewController = segue.destination as? PhotoViewController,
+            let IndexPath = collectionView.indexPathsForSelectedItems?.first {
+            PhotoViewController.photo = photos[IndexPath.row]
+        }
+            
+        
+    }
+    
+    @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
+        self.layuotType = LayoutType(rawValue: sender.selectedSegmentIndex) ?? .grid
+        collectionView.reloadData()
     }
 
 }
@@ -39,8 +55,7 @@ extension MainViewController:UICollectionViewDataSource, UICollectionViewDelegat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
         
         let photo = photos[indexPath.row]
-        cell.imageURL = photo.smallImageURL
-        
+        cell.imageURL = layuotType == .grid ? photo.smallImageURL : photo.bigImageURL
         
         return cell
     }
@@ -48,7 +63,7 @@ extension MainViewController:UICollectionViewDataSource, UICollectionViewDelegat
         var reusableView = UICollectionReusableView()
         
         if kind == UICollectionElementKindSectionHeader {
-            reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchHeader", for: indexPath)
+        reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchHeader", for: indexPath)
         }
         
         return reusableView
@@ -58,13 +73,31 @@ extension MainViewController:UICollectionViewDataSource, UICollectionViewDelegat
 // mark: Flow Layout
 extension MainViewController:UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth = collectionView.bounds.width / 2
-        return CGSize(width: itemWidth, height: itemWidth)
+    enum LayoutType: Int {
+        case grid
+        case list
     }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        let lineSpacing = collectionView.se
-//           }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if layuotType == .grid {
+            let itemWidth = collectionView.bounds.width / 3
+            return CGSize(width: itemWidth, height: itemWidth)
+        } else {
+            return CGSize(width: collectionView.bounds.width,
+                          height: 200)
+        }
+        
+    }
+}
+
+// MARK: SearchBar
+extension MainViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        getFlickerPhotos(searchText: searchBar.text)
+    }
+    
 }
 
 // MARK: Networking
@@ -90,7 +123,7 @@ extension MainViewController {
     
     func fetchFlickrPhotos (searchText: String? = nil, completion: (([Photo]?) -> Void)? = nil) {
         let url = URL(string:"https://api.flickr.com/services/rest/?")!
-        let parameters = [
+        var parameters = [
             "method" : "flickr.interestingness.getList",
             "api_key" : "86997f23273f5a518b027e2c8c019b0f",
             "sort" : "relevance",
@@ -100,7 +133,12 @@ extension MainViewController {
             "extras" : "url_q,url_z"
             
         ]
-    
+    if let searchText = searchText {
+        parameters ["method"] = "flickr.photos.search"
+        parameters ["text"] = searchText
+}
+        
+        
         Alamofire.request (url, method: .get, parameters: parameters)
         .validate()
             .responseData { (response) in
