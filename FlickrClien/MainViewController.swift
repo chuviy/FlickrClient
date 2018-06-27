@@ -27,7 +27,7 @@ class MainViewController: UIViewController {
 }
 
 // MARK: Collection View
-extension MainViewController:UICollectionViewDataSource {
+extension MainViewController:UICollectionViewDataSource, UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
         return photos.count
@@ -38,9 +38,22 @@ extension MainViewController:UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
         
+        let photo = photos[indexPath.row]
+        cell.imageURL = photo.smallImageURL
+        
+        
         return cell
     }
 }
+
+// mark: Flow Layout
+extension MainViewController:UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemWidth = collectionView.bounds.width / 3
+        return CGSize(width: itemWidth, height: itemWidth)
+    }
+}
+
 // MARK: Networking
 extension MainViewController {
     
@@ -56,6 +69,7 @@ extension MainViewController {
             
             if let photos = photos  {
             strongSelf.photos = photos
+            strongSelf.collectionView.reloadData()
                 
             }
         }
@@ -84,9 +98,6 @@ extension MainViewController {
                         completion?(nil)
                         return
                     }
-                    
-                  //  print(json)
-                  //  completion?(nil)
                     
                     let photosJSON = json["photos"]["photo"]
                     let photos = photosJSON.arrayValue.flatMap { Photo(json: $0) }
