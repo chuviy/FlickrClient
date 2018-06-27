@@ -44,14 +44,27 @@ extension MainViewController:UICollectionViewDataSource, UICollectionViewDelegat
         
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        var reusableView = UICollectionReusableView()
+        
+        if kind == UICollectionElementKindSectionHeader {
+            reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchHeader", for: indexPath)
+        }
+        
+        return reusableView
+    }
 }
 
 // mark: Flow Layout
 extension MainViewController:UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth = collectionView.bounds.width / 3
+        let itemWidth = collectionView.bounds.width / 2
         return CGSize(width: itemWidth, height: itemWidth)
     }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        let lineSpacing = collectionView.se
+//           }
 }
 
 // MARK: Networking
