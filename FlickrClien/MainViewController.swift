@@ -125,7 +125,7 @@ extension MainViewController {
         let url = URL(string:"https://api.flickr.com/services/rest/?")!
         var parameters = [
             "method" : "flickr.interestingness.getList",
-            "api_key" : "86997f23273f5a518b027e2c8c019b0f",
+            "api_key" : "b843153cde1e85991ae7d60099f50bdf",
             "sort" : "relevance",
             "per_page" : "30",
             "format" : "json",
