@@ -44,6 +44,7 @@ class MainViewController: UIViewController {
 
 // MARK: Collection View
 extension MainViewController:UICollectionViewDataSource, UICollectionViewDelegate {
+   
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
         return photos.count
@@ -62,7 +63,7 @@ extension MainViewController:UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var reusableView = UICollectionReusableView()
         
-        if kind == UICollectionElementKindSectionHeader {
+        if kind == UICollectionView.elementKindSectionHeader {
         reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchHeader", for: indexPath)
         }
         
@@ -95,6 +96,7 @@ extension MainViewController:UICollectionViewDelegateFlowLayout {
 extension MainViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        
         getFlickerPhotos(searchText: searchBar.text)
     }
     
@@ -151,7 +153,7 @@ extension MainViewController {
                     }
                     
                     let photosJSON = json["photos"]["photo"]
-                    let photos = photosJSON.arrayValue.flatMap { Photo(json: $0) }
+                    let photos = photosJSON.arrayValue.compactMap { Photo(json: $0) }
                     completion?(photos)
                     
                     
