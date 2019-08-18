@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		54021BA1AEAB452CCF2458CD /* Pods_FlickrClien.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5897DEC7397686ABFD0894BC /* Pods_FlickrClien.framework */; };
+		8D8E55362309DBF8002A051A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8D8E55352309DBF8002A051A /* .gitignore */; };
 		B3563B6920B58B060015CE67 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3563B6820B58B060015CE67 /* MainViewController.swift */; };
 		B3563B6B20B58B240015CE67 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3563B6A20B58B240015CE67 /* PhotoViewController.swift */; };
 		B3563B6D20B590AC0015CE67 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3563B6C20B590AC0015CE67 /* Photo.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		5897DEC7397686ABFD0894BC /* Pods_FlickrClien.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickrClien.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D8E55352309DBF8002A051A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B3563B6820B58B060015CE67 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B3563B6A20B58B240015CE67 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		B3563B6C20B590AC0015CE67 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 		B37861B620A198EF00C2D075 = {
 			isa = PBXGroup;
 			children = (
+				8D8E55352309DBF8002A051A /* .gitignore */,
 				B37861C120A198F000C2D075 /* FlickrClien */,
 				B37861C020A198F000C2D075 /* Products */,
 				99D00B9AA900654DF54B0D9E /* Pods */,
@@ -160,6 +163,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D8E55362309DBF8002A051A /* .gitignore in Resources */,
 				B37861CD20A198F000C2D075 /* LaunchScreen.storyboard in Resources */,
 				B37861CA20A198F000C2D075 /* Assets.xcassets in Resources */,
 				B37861C820A198F000C2D075 /* Main.storyboard in Resources */,
