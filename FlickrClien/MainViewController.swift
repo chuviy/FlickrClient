@@ -56,6 +56,7 @@ extension MainViewController:UICollectionViewDataSource, UICollectionViewDelegat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
         
         let photo = photos[indexPath.row]
+        
         cell.imageURL = layuotType == .grid ? photo.smallImageURL : photo.bigImageURL
         
         return cell
@@ -127,7 +128,7 @@ extension MainViewController {
         let url = URL(string:"https://api.flickr.com/services/rest/?")!
         var parameters = [
             "method" : "flickr.interestingness.getList",
-            "api_key" : "b843153cde1e85991ae7d60099f50bdf",
+            "api_key" : "284df51c698f9c03cb6b936be1118b9e",
             "sort" : "relevance",
             "per_page" : "30",
             "format" : "json",

@@ -10,6 +10,6 @@ target 'FlickrClien' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'MBProgressHUD'
-  pod 'Kingfisher', '~> 3.0’
+  pod 'Kingfisher', '~> 5.7'
 
 end

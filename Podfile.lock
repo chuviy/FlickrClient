@@ -1,12 +1,12 @@
 PODS:
   - Alamofire (4.6.0)
-  - Kingfisher (3.13.1)
+  - Kingfisher (5.7.1)
   - MBProgressHUD (1.1.0)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Alamofire
-  - Kingfisher (~> 3.0)
+  - Kingfisher (~> 5.7)
   - MBProgressHUD
   - SwiftyJSON
 
@@ -19,10 +19,10 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
-  Kingfisher: ed9707a409cc47fddafbcd12a43a9757e3600af5
+  Kingfisher: 176d377ad339113c99ad4980cbae687f807e20fe
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: a9a16c12f8cc5f43f2df7138ff4bcb018c93590b
+PODFILE CHECKSUM: 600362b39477fb249c889e6ef324609dd9ca2728
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.5
