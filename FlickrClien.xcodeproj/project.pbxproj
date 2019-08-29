@@ -92,8 +92,8 @@
 				B3563B6820B58B060015CE67 /* MainViewController.swift */,
 				B3FF291120E3903B00995D23 /* PhotoCell.swift */,
 				B3563B6C20B590AC0015CE67 /* Photo.swift */,
-				B3563B6A20B58B240015CE67 /* PhotoViewController.swift */,
 				B37861C920A198F000C2D075 /* Assets.xcassets */,
+				B3563B6A20B58B240015CE67 /* PhotoViewController.swift */,
 				B37861CB20A198F000C2D075 /* LaunchScreen.storyboard */,
 				B37861CE20A198F000C2D075 /* Info.plist */,
 			);
