@@ -59,24 +59,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" placeholder="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdM-Zg-kUA">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                        <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3eI-Hg-Mdq">
+                                            <rect key="frame" x="0.0" y="-7" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <textInputTraits key="textInputTraits"/>
-                                            <scopeButtonTitles>
-                                                <string>Title</string>
-                                                <string>Title</string>
-                                            </scopeButtonTitles>
-                                            <connections>
-                                                <outlet property="delegate" destination="N2C-Mu-nky" id="PnU-fO-Xek"/>
-                                            </connections>
                                         </searchBar>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="gdM-Zg-kUA" firstAttribute="leading" secondItem="amd-Q7-KIg" secondAttribute="leading" id="5bl-7T-UiL"/>
-                                        <constraint firstItem="gdM-Zg-kUA" firstAttribute="top" secondItem="amd-Q7-KIg" secondAttribute="top" id="bmC-iR-fdT"/>
-                                        <constraint firstAttribute="trailing" secondItem="gdM-Zg-kUA" secondAttribute="trailing" id="pDz-Bu-Tvu"/>
-                                        <constraint firstAttribute="bottom" secondItem="gdM-Zg-kUA" secondAttribute="bottom" id="yxY-75-ss6"/>
-                                    </constraints>
                                 </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="N2C-Mu-nky" id="tsx-tU-yUm"/>

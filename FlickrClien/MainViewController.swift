@@ -16,6 +16,22 @@ class MainViewController: UIViewController {
     var photos: [Photo] = []
     var layuotType: LayoutType = .grid
     
+    let searchController = UISearchController(searchResultsController: nil)
+    
+//    // Setup the Search Controller
+//    searchController.searchResultsUpdater = self
+//    searchController.obscuresBackgroundDuringPresentation = false
+//    searchController.searchBar.placeholder = "Search Candies"
+//    navigationItem.searchController = searchController
+//    definesPresentationContext = true
+//
+//    // Setup the Scope Bar
+//    searchController.searchBar.scopeButtonTitles = ["All", "Chocolate", "Hard", "Other"]
+//    searchController.searchBar.delegate = self
+
+//    // Setup the search footer
+//    tableView.tableFooterView = searchFooter
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -102,6 +118,50 @@ extension MainViewController: UISearchBarDelegate {
     }
     
 }
+
+//// MARK: - Private instance methods
+//
+//func filterContentForSearchText(_ searchText: String, scope: String = "All")
+//{
+//    filteredCandies = candies.filter(
+//        {
+//            ( candy : Candy) -> Bool in
+//            let doesCategoryMatch = (scope == "All") || (candy.category == scope)
+//            if searchBarIsEmpty() {
+//                return doesCategoryMatch
+//            }
+//            else {
+//                return doesCategoryMatch && candy.name.lowercased().contains(searchText.lowercased())
+//            }
+//    })
+//    tableView.reloadData()
+//}
+//
+//func searchBarIsEmpty() -> Bool {
+//    return searchController.searchBar.text?.isEmpty ?? true
+//}
+//
+//func isFiltering() -> Bool {
+//    let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+//    return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+//}
+//}
+//
+//extension MasterViewController: UISearchBarDelegate {
+//    // MARK: - UISearchBar Delegate
+//    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+//        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+//    }
+//}
+//
+//extension MasterViewController: UISearchResultsUpdating {
+//    // MARK: - UISearchResultsUpdating Delegate
+//    func updateSearchResults(for searchController: UISearchController) {
+//        let searchBar = searchController.searchBar
+//        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+//        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
+//    }
+//}
 
 // MARK: Networking
 extension MainViewController {
