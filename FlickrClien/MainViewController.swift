@@ -31,7 +31,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
         definesPresentationContext = true
 //
 //        // Setup the Scope Bar
-        searchController.searchBar.scopeButtonTitles = ["All", "Chocolate", "Hard", "Other"]
+       // searchController.searchBar.scopeButtonTitles = ["All", "Chocolate", "Hard", "Other"]
         searchController.searchBar.delegate = self as! UISearchBarDelegate
 //
 //        // Setup the search footer
@@ -186,7 +186,7 @@ func filterContentForSearchText(_ searchText: String)
 //                return searchController.searchBar.text!
 //            }
 //            else {
-//                return searchController.contains(searchText.lowercased() as! UIFocusEnvironment)
+//                searchController.contains(searchText.lowercased() as! UIFocusEnvironment)
 //            }
     collectionView.reloadData()
 
@@ -206,14 +206,14 @@ func isFiltering() -> Bool {
 
     // MARK: SearchBar
     extension MainViewController: UISearchBarDelegate {
-        // old method
-        //    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //        searchBar.resignFirstResponder()
-        
+       //  old method
+            func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+                searchBar.resignFirstResponder()
+        }
         func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
             filterContentForSearchText(searchBar.text!)
             searchBar.resignFirstResponder()
-            // getFlickerPhotos(searchText: searchBar.text!)
+             getFlickerPhotos(searchText: searchBar.text!)
         }
     }
     
@@ -222,7 +222,7 @@ func isFiltering() -> Bool {
 extension MainViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
+       // let searchBar = searchController.searchBar
       //  let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
         filterContentForSearchText(searchController.searchBar.text!)
     }
