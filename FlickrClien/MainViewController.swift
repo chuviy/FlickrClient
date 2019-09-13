@@ -23,16 +23,16 @@ class MainViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        // Setup the Search Controller
-//        searchController.searchResultsUpdater = self
-//        searchController.obscuresBackgroundDuringPresentation = false
-//        searchController.searchBar.placeholder = "Search Candies"
-//        navigationItem.searchController = searchController
-//        definesPresentationContext = true
+        // Setup the Search Controller
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Candies"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
 //
 //        // Setup the Scope Bar
-//        searchController.searchBar.scopeButtonTitles = ["All", "Chocolate", "Hard", "Other"]
-//        searchController.searchBar.delegate = self
+        searchController.searchBar.scopeButtonTitles = ["All", "Chocolate", "Hard", "Other"]
+        searchController.searchBar.delegate = self as! UISearchBarDelegate
 //
 //        // Setup the search footer
 //        tableView.tableFooterView = searchFooter
@@ -148,6 +148,7 @@ extension MainViewController {
         parameters ["text"] = searchText
 }
         
+       
         
         Alamofire.request (url, method: .get, parameters: parameters)
         .validate()
@@ -171,58 +172,62 @@ extension MainViewController {
                 }
     }
  }
-}
 
-// MARK: SearchBar
-extension MainViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        
-        getFlickerPhotos(searchText: searchBar.text)
-    }
+
+
+
 // new method
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        //   filterContentForSearchText(searchBar.text!/*, scope: searchBar.scopeButtonTitles![selectedScope]*/)
-    }
-}
-
-// new
 
 // MARK: - Private instance methods
 
-//func filterContentForSearchText(_ searchText: String, scope: String = "All")
-//{
-//    filteredCandies = candies.filter(
-//        {
-//            ( candy : Candy) -> Bool in
-//            let doesCategoryMatch = (scope == "All") || (candy.category == scope)
+func filterContentForSearchText(_ searchText: String)
+{
 //            if searchBarIsEmpty() {
-//                return doesCategoryMatch
+//                return searchController.searchBar.text!
 //            }
 //            else {
-//                return doesCategoryMatch && candy.name.lowercased().contains(searchText.lowercased())
+//                return searchController.contains(searchText.lowercased() as! UIFocusEnvironment)
 //            }
-//    })
-//    tableView.reloadData()
-//}
-//
-//func searchBarIsEmpty() -> Bool {
-//    return searchController.searchBar.text?.isEmpty ?? true
-//}
-//
-//func isFiltering() -> Bool {
-//    let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
-//    return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
-//}
-//}
+    collectionView.reloadData()
 
+ }
+    
+
+
+func searchBarIsEmpty() -> Bool {
+    return searchController.searchBar.text?.isEmpty ?? true
+}
+
+func isFiltering() -> Bool {
+    let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+    return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+}
+}
+
+    // MARK: SearchBar
+    extension MainViewController: UISearchBarDelegate {
+        // old method
+        //    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //        searchBar.resignFirstResponder()
+        
+        func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+            filterContentForSearchText(searchBar.text!)
+            searchBar.resignFirstResponder()
+            // getFlickerPhotos(searchText: searchBar.text!)
+        }
+    }
+    
+    
 
 extension MainViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
       //  let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
-   //     filterContentForSearchText(searchController.searchBar.text!)
-}
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
     
-}
+ }
+
+
+
