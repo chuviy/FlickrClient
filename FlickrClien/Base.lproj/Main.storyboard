@@ -39,15 +39,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h58-lW-N7d">
-                                                    <rect key="frame" x="12" y="35" width="272" height="175"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="291" height="220"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottomMargin" secondItem="h58-lW-N7d" secondAttribute="bottom" constant="2" id="3sa-E0-Ofn"/>
-                                            <constraint firstItem="h58-lW-N7d" firstAttribute="top" secondItem="UgV-g3-nue" secondAttribute="topMargin" constant="7" id="Bi1-eq-Z82"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="h58-lW-N7d" secondAttribute="trailing" constant="-1" id="Pmd-Xs-IEW"/>
-                                            <constraint firstItem="h58-lW-N7d" firstAttribute="leading" secondItem="UgV-g3-nue" secondAttribute="leadingMargin" constant="4" id="ZcL-tl-hAH"/>
+                                            <constraint firstAttribute="bottom" secondItem="h58-lW-N7d" secondAttribute="bottom" id="CGx-2Q-iOX"/>
+                                            <constraint firstItem="h58-lW-N7d" firstAttribute="leading" secondItem="UgV-g3-nue" secondAttribute="leading" id="SXQ-lt-Hxk"/>
+                                            <constraint firstItem="h58-lW-N7d" firstAttribute="top" secondItem="UgV-g3-nue" secondAttribute="top" id="XsE-T9-Fbz"/>
+                                            <constraint firstAttribute="trailing" secondItem="h58-lW-N7d" secondAttribute="trailing" id="k4l-PE-SO0"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="photoImageView" destination="h58-lW-N7d" id="Zkx-2L-XiW"/>
