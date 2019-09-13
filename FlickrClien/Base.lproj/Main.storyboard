@@ -104,19 +104,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xEn-n9-3hK">
-                                <rect key="frame" x="-5" y="68" width="383" height="600"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="499"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="499" id="fK3-v6-NAL"/>
+                                </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIl-Kc-gV1">
+                                <rect key="frame" x="16" y="573" width="343" height="19"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="xEn-n9-3hK" secondAttribute="trailing" constant="-3" id="JEb-EQ-kmD"/>
-                            <constraint firstItem="xEn-n9-3hK" firstAttribute="leading" secondItem="uvK-PI-gzO" secondAttribute="leading" constant="-5" id="hgw-5m-vwl"/>
-                            <constraint firstItem="xEn-n9-3hK" firstAttribute="top" secondItem="f8e-av-CXp" secondAttribute="bottom" constant="4" id="qUm-Gw-rgz"/>
-                            <constraint firstItem="xio-tE-neA" firstAttribute="top" secondItem="xEn-n9-3hK" secondAttribute="bottom" constant="-1" id="xne-zg-rWR"/>
+                            <constraint firstItem="xEn-n9-3hK" firstAttribute="leading" secondItem="uvK-PI-gzO" secondAttribute="leading" id="6lu-bL-zzV"/>
+                            <constraint firstItem="RIl-Kc-gV1" firstAttribute="top" secondItem="xEn-n9-3hK" secondAttribute="bottom" constant="10" id="Hm1-od-a9C"/>
+                            <constraint firstItem="RIl-Kc-gV1" firstAttribute="trailing" secondItem="uvK-PI-gzO" secondAttribute="trailingMargin" id="RIz-p4-Z66"/>
+                            <constraint firstItem="xEn-n9-3hK" firstAttribute="top" secondItem="f8e-av-CXp" secondAttribute="bottom" id="SxD-9s-Qgv"/>
+                            <constraint firstAttribute="trailing" secondItem="xEn-n9-3hK" secondAttribute="trailing" id="XB6-YB-b7l"/>
+                            <constraint firstItem="RIl-Kc-gV1" firstAttribute="leading" secondItem="uvK-PI-gzO" secondAttribute="leadingMargin" id="qgI-53-H2T"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="photoImageView" destination="xEn-n9-3hK" id="YfO-S0-nKo"/>
+                        <outlet property="titleLabel" destination="RIl-Kc-gV1" id="KJW-r4-Hcs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ef-En-ks6" userLabel="First Responder" sceneMemberID="firstResponder"/>

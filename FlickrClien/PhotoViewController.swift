@@ -14,12 +14,15 @@ class PhotoViewController: UIViewController {
     var photo:Photo?
     
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let photo = photo, let url = URL(string: photo.bigImageURL) {
             photoImageView.kf.setImage(with: url)
+            
+        titleLabel.text = photo.title
         }
 
     }
