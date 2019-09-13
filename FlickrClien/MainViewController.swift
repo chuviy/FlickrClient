@@ -14,6 +14,7 @@ import MBProgressHUD
 class MainViewController: UIViewController, UITableViewDelegate {
 
     var photos: [Photo] = []
+    var filteredPhotos: [Photo] = []
     var layuotType: LayoutType = .grid
     
     let searchController = UISearchController(searchResultsController: nil)
@@ -26,16 +27,12 @@ class MainViewController: UIViewController, UITableViewDelegate {
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Candies"
+        searchController.searchBar.placeholder = "Search Photos"
         navigationItem.searchController = searchController
         definesPresentationContext = true
-//
-//        // Setup the Scope Bar
-       // searchController.searchBar.scopeButtonTitles = ["All", "Chocolate", "Hard", "Other"]
-        searchController.searchBar.delegate = self as! UISearchBarDelegate
-//
-//        // Setup the search footer
-//        tableView.tableFooterView = searchFooter
+
+       // Setup the Scope Bar
+        searchController.searchBar.delegate = self  as UISearchBarDelegate
         
       getFlickerPhotos()
     }
@@ -70,9 +67,7 @@ extension MainViewController:UICollectionViewDataSource, UICollectionViewDelegat
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
-        
         let photo = photos[indexPath.row]
-        
         cell.imageURL = layuotType == .grid ? photo.smallImageURL : photo.bigImageURL
         
         return cell
@@ -174,21 +169,21 @@ extension MainViewController {
  }
 
 
-
-
-// new method
-
 // MARK: - Private instance methods
 
 func filterContentForSearchText(_ searchText: String)
+
 {
-//            if searchBarIsEmpty() {
-//                return searchController.searchBar.text!
-//            }
-//            else {
-//                searchController.contains(searchText.lowercased() as! UIFocusEnvironment)
-//            }
-    collectionView.reloadData()
+    if searchBarIsEmpty() {
+        
+        getFlickerPhotos()
+        
+    } else {
+    //  print(searchController.searchBar.text!)
+    getFlickerPhotos(searchText: searchController.searchBar.text!)
+        
+        collectionView.reloadData()
+    }
 
  }
     
@@ -206,24 +201,21 @@ func isFiltering() -> Bool {
 
     // MARK: SearchBar
     extension MainViewController: UISearchBarDelegate {
-       //  old method
-            func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-                searchBar.resignFirstResponder()
-        }
-        func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+
+        func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int)
+        {
             filterContentForSearchText(searchBar.text!)
+            
             searchBar.resignFirstResponder()
-             getFlickerPhotos(searchText: searchBar.text!)
         }
     }
-    
+
     
 
 extension MainViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
-       // let searchBar = searchController.searchBar
-      //  let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+     
         filterContentForSearchText(searchController.searchBar.text!)
     }
     
