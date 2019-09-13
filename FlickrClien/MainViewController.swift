@@ -151,6 +151,11 @@ extension MainViewController {
                 case .success: // если ответ успешный, получаем данные в JSON и парсим. Для того что бы в последствии получить ссылки на картинки
                     guard let data = response.data, let json = try? JSON(data: data) else {
                       print("Error while parsing Flickr response")
+                        
+                        
+                        
+                        
+                        
                         completion?(nil) // вызываем completion hendler иначе не обновиться UI
                         return
                     }
@@ -161,6 +166,24 @@ extension MainViewController {
                     
                     
                 case .failure(let error): //если ответ неуспешный, печатаем в log описание ошибки.
+                    
+                    let alert = UIAlertController(title: "Ошибка", message: "Проверьте соединение с интернетом и попробуйте еще раз", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                        switch action.style{
+                        case .default:
+                            print("default")
+                            
+                        case .cancel:
+                            print("cancel")
+                            
+                        case .destructive:
+                            print("destructive")
+                            
+                            
+                        }}))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    
                     print("Error while fetching photos : \(error.localizedDescription)")
                     completion?(nil) // вызываем completion hendler иначе не обновиться UI
                 }
