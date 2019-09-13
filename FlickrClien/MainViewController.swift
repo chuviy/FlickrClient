@@ -156,8 +156,8 @@ extension MainViewController {
                     }
                   //  print(json)
                     let photosJSON = json["photos"]["photo"]
-                    let photos = photosJSON.arrayValue.compactMap { Photo(json: $0) }
-                    completion?(photos)
+                    let photos = photosJSON.arrayValue.compactMap { Photo(json: $0) } // т.к. init?(json: JSON) может быть nil, то используем compactMap чтобы не было пустых значений в массиве.
+                    completion?(photos) // возвращает массив из объектов типа: Photo.
                     
                     
                 case .failure(let error): //если ответ неуспешный, печатаем в log описание ошибки.

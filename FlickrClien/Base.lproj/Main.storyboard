@@ -23,7 +23,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ssN-fS-EEl">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Xhp-oS-0Pm">
                                     <size key="itemSize" width="291" height="220"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -61,7 +61,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ssN-fS-EEl" secondAttribute="trailing" id="3BI-Kx-A5h"/>
                             <constraint firstItem="ssN-fS-EEl" firstAttribute="top" secondItem="AX7-dG-i3J" secondAttribute="top" id="gm1-Qs-fCl"/>
@@ -107,7 +107,7 @@
                                 <rect key="frame" x="-5" y="68" width="383" height="600"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="xEn-n9-3hK" secondAttribute="trailing" constant="-3" id="JEb-EQ-kmD"/>
                             <constraint firstItem="xEn-n9-3hK" firstAttribute="leading" secondItem="uvK-PI-gzO" secondAttribute="leading" constant="-5" id="hgw-5m-vwl"/>
@@ -121,14 +121,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ef-En-ks6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3172" y="-5"/>
+            <point key="canvasLocation" x="3172" y="-5.8470764617691158"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kNu-aD-FgW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tjB-RH-ac1" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KR1-13-kxm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="KR1-13-kxm">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
