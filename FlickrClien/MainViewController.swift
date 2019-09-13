@@ -104,7 +104,6 @@ extension MainViewController:UICollectionViewDelegateFlowLayout {
     }
 }
 
-
 // MARK: Networking
 extension MainViewController {
     
@@ -125,14 +124,16 @@ extension MainViewController {
             }
         }
     }
-    
+    // completion hendler - это блок кода выполняющийся после выполнения функции
+    // "completion: (([Photo]?) -> Void)?" возвращает массив из фото, создавая объекты из модели описанной в Photo
+    //
     func fetchFlickrPhotos (searchText: String? = nil, completion: (([Photo]?) -> Void)? = nil) {
         let url = URL(string:"https://api.flickr.com/services/rest/?")!
         var parameters = [
             "method" : "flickr.interestingness.getList",
             "api_key" : "284df51c698f9c03cb6b936be1118b9e",
             "sort" : "relevance",
-            "per_page" : "30",
+            "per_page" : "50",
             "format" : "json",
             "nojsoncallback" : "1",
             "extras" : "url_q,url_z"
@@ -143,31 +144,28 @@ extension MainViewController {
         parameters ["text"] = searchText
 }
         
-       
-        
         Alamofire.request (url, method: .get, parameters: parameters)
-        .validate()
-            .responseData { (response) in
+        .validate() // проверяет статус кодов ответа в диапазаоне 200...299.
+            .responseData { (response) in  // обрабатываем полученный результат
                 switch response.result {
-                case .success:
+                case .success: // если ответ успешный, получаем данные в JSON и парсим. Для того что бы в последствии получить ссылки на картинки
                     guard let data = response.data, let json = try? JSON(data: data) else {
                       print("Error while parsing Flickr response")
-                        completion?(nil)
+                        completion?(nil) // вызываем completion hendler иначе не обновиться UI
                         return
                     }
-                    
+                  //  print(json)
                     let photosJSON = json["photos"]["photo"]
                     let photos = photosJSON.arrayValue.compactMap { Photo(json: $0) }
                     completion?(photos)
                     
                     
-                case .failure(let error):
+                case .failure(let error): //если ответ неуспешный, печатаем в log описание ошибки.
                     print("Error while fetching photos : \(error.localizedDescription)")
-                    completion?(nil)
+                    completion?(nil) // вызываем completion hendler иначе не обновиться UI
                 }
     }
  }
-
 
 // MARK: - Private instance methods
 
@@ -209,8 +207,6 @@ func isFiltering() -> Bool {
             searchBar.resignFirstResponder()
         }
     }
-
-    
 
 extension MainViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
