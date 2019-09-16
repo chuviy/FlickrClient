@@ -151,11 +151,7 @@ extension MainViewController {
                 case .success: // если ответ успешный, получаем данные в JSON и парсим. Для того что бы в последствии получить ссылки на картинки
                     guard let data = response.data, let json = try? JSON(data: data) else {
                       print("Error while parsing Flickr response")
-                        
-                        
-                        
-                        
-                        
+    
                         completion?(nil) // вызываем completion hendler иначе не обновиться UI
                         return
                     }
@@ -195,15 +191,17 @@ extension MainViewController {
 func filterContentForSearchText(_ searchText: String)
 
 {
-    if searchBarIsEmpty() {
+    if searchBarIsEmpty() /*&& searchController.searchBar.text!.count > 3 */ {
         
         getFlickerPhotos()
         
-    } else {
-    //  print(searchController.searchBar.text!)
+    } else { if searchController.searchBar.text!.count >= 3 {
+        //  print(searchController.searchBar.text!)
     getFlickerPhotos(searchText: searchController.searchBar.text!)
         
-        collectionView.reloadData()
+        collectionView.reloadData() } else {
+        getFlickerPhotos()
+        }
     }
 
  }
