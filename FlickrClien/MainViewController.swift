@@ -153,7 +153,7 @@ extension MainViewController {
                         completion?(nil) // вызываем completion hendler иначе не обновиться UI
                         return
                     }
-                    print(json)
+ //                   print(json)
                     let photosJSON = json["photos"]["photo"]
                     let photos = photosJSON.arrayValue.compactMap { Photo(json: $0) } // т.к. init?(json: JSON) может быть nil, то используем compactMap чтобы не было пустых значений в массиве.
                     completion?(photos) // возвращает массив из объектов типа: Photo.
