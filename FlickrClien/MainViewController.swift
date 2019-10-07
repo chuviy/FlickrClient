@@ -18,6 +18,8 @@ class MainViewController: UIViewController, UITableViewDelegate {
     var layuotType: LayoutType = .grid
     
     let searchController = UISearchController(searchResultsController: nil)
+    let userDefaults = UserDefaults.standard
+    var searchArray: [String] = []
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -30,7 +32,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
         searchController.searchBar.placeholder = "Search Photos"
         navigationItem.searchController = searchController
         definesPresentationContext = true
-
+        
        // Setup the Scope Bar
         searchController.searchBar.delegate = self  as UISearchBarDelegate
         
@@ -54,7 +56,6 @@ class MainViewController: UIViewController, UITableViewDelegate {
     }
 
 }
-
 // MARK: Collection View
 extension MainViewController:UICollectionViewDataSource, UICollectionViewDelegate {
    
@@ -82,7 +83,6 @@ extension MainViewController:UICollectionViewDataSource, UICollectionViewDelegat
         return reusableView
     }
 }
-
 // mark: Flow Layout
 extension MainViewController:UICollectionViewDelegateFlowLayout {
     
@@ -103,7 +103,6 @@ extension MainViewController:UICollectionViewDelegateFlowLayout {
         
     }
 }
-
 // MARK: Networking
 extension MainViewController {
     
@@ -133,7 +132,7 @@ extension MainViewController {
             "method" : "flickr.interestingness.getList",
             "api_key" : "284df51c698f9c03cb6b936be1118b9e",
             "sort" : "relevance",
-            "per_page" : "50",
+            "per_page" : "30",
             "format" : "json",
             "nojsoncallback" : "1",
             "extras" : "url_q,url_z"
@@ -143,7 +142,6 @@ extension MainViewController {
         parameters ["method"] = "flickr.photos.search"
         parameters ["text"] = searchText
 }
-        
         Alamofire.request (url, method: .get, parameters: parameters)
         .validate() // проверяет статус кодов ответа в диапазаоне 200...299.
             .responseData { (response) in  // обрабатываем полученный результат
@@ -155,7 +153,7 @@ extension MainViewController {
                         completion?(nil) // вызываем completion hendler иначе не обновиться UI
                         return
                     }
-                  //  print(json)
+                    print(json)
                     let photosJSON = json["photos"]["photo"]
                     let photos = photosJSON.arrayValue.compactMap { Photo(json: $0) } // т.к. init?(json: JSON) может быть nil, то используем compactMap чтобы не было пустых значений в массиве.
                     completion?(photos) // возвращает массив из объектов типа: Photo.
@@ -164,19 +162,7 @@ extension MainViewController {
                 case .failure(let error): //если ответ неуспешный, печатаем в log описание ошибки.
                     
                     let alert = UIAlertController(title: "Ошибка", message: "Проверьте соединение с интернетом и попробуйте еще раз", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                        switch action.style{
-                        case .default:
-                            print("default")
-                            
-                        case .cancel:
-                            print("cancel")
-                            
-                        case .destructive:
-                            print("destructive")
-                            
-                            
-                        }}))
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(alert, animated: true, completion: nil)
                     
                     
@@ -185,29 +171,29 @@ extension MainViewController {
                 }
     }
  }
-
 // MARK: - Private instance methods
-
+    
 func filterContentForSearchText(_ searchText: String)
-
 {
-    if searchBarIsEmpty() /*&& searchController.searchBar.text!.count > 3 */ {
-        
+    if searchBarIsEmpty() {  // если в поле поиска ничего нет то загружаем стандартный набор (популярных) картинок без параметров поиска
         getFlickerPhotos()
         
-    } else { if searchController.searchBar.text!.count >= 3 {
-        //  print(searchController.searchBar.text!)
-    getFlickerPhotos(searchText: searchController.searchBar.text!)
+    } else { if searchController.searchBar.text!.count >= 3 { // иначе если в строке поиска >= 3 символов то загружаем фото по введенному тексту
+        getFlickerPhotos(searchText: searchController.searchBar.text!)
         
-        collectionView.reloadData() } else {
+        searchArray.append(searchController.searchBar.text!)
+        userDefaults.set(searchArray, forKey: "valueSearch")
+        let tabledata = UserDefaults.standard.array(forKey: "valueSearch")
+        userDefaults.synchronize()
+        print(tabledata!)
+        
+        collectionView.reloadData()
+      
+    } else {
         getFlickerPhotos()
         }
     }
-
  }
-    
-
-
 func searchBarIsEmpty() -> Bool {
     return searchController.searchBar.text?.isEmpty ?? true
 }
@@ -224,7 +210,6 @@ func isFiltering() -> Bool {
         func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int)
         {
             filterContentForSearchText(searchBar.text!)
-            
             searchBar.resignFirstResponder()
         }
     }
@@ -232,11 +217,7 @@ func isFiltering() -> Bool {
 extension MainViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
-     
         filterContentForSearchText(searchController.searchBar.text!)
     }
     
  }
-
-
-
