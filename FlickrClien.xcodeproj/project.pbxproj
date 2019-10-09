@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		54021BA1AEAB452CCF2458CD /* Pods_FlickrClien.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5897DEC7397686ABFD0894BC /* Pods_FlickrClien.framework */; };
+		8D03EA4C234D33DA00F896A2 /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D03EA4B234D33DA00F896A2 /* FullScreenImageViewController.swift */; };
+		8D03EA4E234D980E00F896A2 /* apples.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8D03EA4D234D980E00F896A2 /* apples.jpg */; };
 		8D8577D1234AE74D00276B01 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8D8577D0234AE74D00276B01 /* .gitignore */; };
+		8D912406234BA95200D795D0 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D912405234BA95200D795D0 /* ImageScrollView.swift */; };
 		B3563B6920B58B060015CE67 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3563B6820B58B060015CE67 /* MainViewController.swift */; };
 		B3563B6B20B58B240015CE67 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3563B6A20B58B240015CE67 /* PhotoViewController.swift */; };
 		B3563B6D20B590AC0015CE67 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3563B6C20B590AC0015CE67 /* Photo.swift */; };
@@ -21,7 +24,10 @@
 
 /* Begin PBXFileReference section */
 		5897DEC7397686ABFD0894BC /* Pods_FlickrClien.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickrClien.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D03EA4B234D33DA00F896A2 /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
+		8D03EA4D234D980E00F896A2 /* apples.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apples.jpg; sourceTree = "<group>"; };
 		8D8577D0234AE74D00276B01 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		8D912405234BA95200D795D0 /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		B3563B6820B58B060015CE67 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B3563B6A20B58B240015CE67 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		B3563B6C20B590AC0015CE67 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -88,6 +94,7 @@
 			children = (
 				B37861C220A198F000C2D075 /* AppDelegate.swift */,
 				B37861C620A198F000C2D075 /* Main.storyboard */,
+				8D03EA4B234D33DA00F896A2 /* FullScreenImageViewController.swift */,
 				B3563B6820B58B060015CE67 /* MainViewController.swift */,
 				B3FF291120E3903B00995D23 /* PhotoCell.swift */,
 				B3563B6C20B590AC0015CE67 /* Photo.swift */,
@@ -96,6 +103,8 @@
 				B37861CB20A198F000C2D075 /* LaunchScreen.storyboard */,
 				B37861CE20A198F000C2D075 /* Info.plist */,
 				8D8577D0234AE74D00276B01 /* .gitignore */,
+				8D03EA4D234D980E00F896A2 /* apples.jpg */,
+				8D912405234BA95200D795D0 /* ImageScrollView.swift */,
 			);
 			path = FlickrClien;
 			sourceTree = "<group>";
@@ -166,6 +175,7 @@
 				8D8577D1234AE74D00276B01 /* .gitignore in Resources */,
 				B37861CD20A198F000C2D075 /* LaunchScreen.storyboard in Resources */,
 				B37861CA20A198F000C2D075 /* Assets.xcassets in Resources */,
+				8D03EA4E234D980E00F896A2 /* apples.jpg in Resources */,
 				B37861C820A198F000C2D075 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,7 +236,9 @@
 				B3FF291220E3903B00995D23 /* PhotoCell.swift in Sources */,
 				B3563B6920B58B060015CE67 /* MainViewController.swift in Sources */,
 				B3563B6B20B58B240015CE67 /* PhotoViewController.swift in Sources */,
+				8D03EA4C234D33DA00F896A2 /* FullScreenImageViewController.swift in Sources */,
 				B37861C320A198F000C2D075 /* AppDelegate.swift in Sources */,
+				8D912406234BA95200D795D0 /* ImageScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

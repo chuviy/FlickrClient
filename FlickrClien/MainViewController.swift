@@ -20,6 +20,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
     let searchController = UISearchController(searchResultsController: nil)
     let userDefaults = UserDefaults.standard
     var searchArray: [String] = []
+        
     
     @IBOutlet weak var collectionView: UICollectionView!
     
