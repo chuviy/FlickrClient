@@ -80,7 +80,7 @@ class ImageScrollView: UIScrollView, UIScrollViewDelegate {
     }
     func centerImage() { // центрируем наше изображение
         let boundSize = self.bounds.size // фиксируем рамки
-        var frameToCenter = imageZoomView.frame ?? CGRect.zero // фиксируем фрейм до центра + default value '?? CGRect.zero'
+        var frameToCenter = imageZoomView.frame // фиксируем фрейм до центра + default value '?? CGRect.zero'
         
         if frameToCenter.size.width < boundSize.width {
             frameToCenter.origin.x = (boundSize.width - frameToCenter.size.width) / 2
@@ -117,7 +117,7 @@ class ImageScrollView: UIScrollView, UIScrollViewDelegate {
     
     func zoomRect(scale: CGFloat, center: CGPoint) -> CGRect {
         var zoomRect = CGRect.zero
-        let bounce = self.bounds // границы
+        _ = self.bounds // границы
         
         zoomRect.size.width = bounds.size.width / scale
         zoomRect.size.height = bounds.size.height / scale

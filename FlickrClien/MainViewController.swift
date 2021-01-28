@@ -186,7 +186,8 @@ func filterContentForSearchText(_ searchText: String)
         userDefaults.set(searchArray, forKey: "valueSearch")
         let tabledata = UserDefaults.standard.array(forKey: "valueSearch")
         userDefaults.synchronize()
-        print(tabledata!)
+        print("userDefaults valueSearch \(tabledata!)")
+        print(userDefaults.self)
         
         collectionView.reloadData()
       
