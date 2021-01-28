@@ -62,6 +62,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8DB4806E25C2ED1E006E9725 /* Support files */ = {
+			isa = PBXGroup;
+			children = (
+				B37861C920A198F000C2D075 /* Assets.xcassets */,
+				8D8577D0234AE74D00276B01 /* .gitignore */,
+				8D03EA4D234D980E00F896A2 /* apples.jpg */,
+			);
+			path = "Support files";
+			sourceTree = "<group>";
+		};
 		99D00B9AA900654DF54B0D9E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,11 +109,9 @@
 				B3FF291120E3903B00995D23 /* PhotoCell.swift */,
 				B3563B6C20B590AC0015CE67 /* Photo.swift */,
 				B3563B6A20B58B240015CE67 /* PhotoViewController.swift */,
-				B37861C920A198F000C2D075 /* Assets.xcassets */,
+				8DB4806E25C2ED1E006E9725 /* Support files */,
 				B37861CB20A198F000C2D075 /* LaunchScreen.storyboard */,
 				B37861CE20A198F000C2D075 /* Info.plist */,
-				8D8577D0234AE74D00276B01 /* .gitignore */,
-				8D03EA4D234D980E00F896A2 /* apples.jpg */,
 				8D912405234BA95200D795D0 /* ImageScrollView.swift */,
 			);
 			path = FlickrClien;
